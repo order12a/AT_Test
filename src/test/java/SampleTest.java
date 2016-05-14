@@ -4,6 +4,8 @@ public class SampleTest extends TestBaseData {
 
     /**
      * According to test scenario no assertions were added to this test, only actions
+     * Scenario works incorrect, smth. strange with creating first task(will be investigated later
+     * using pure webdriver)
      */
 
     @Test(dataProvider = "TEST_DATA")

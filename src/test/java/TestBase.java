@@ -24,7 +24,7 @@ public class TestBase {
             baseUrl = "https://todomvc4tasj.herokuapp.com";
         }
         System.out.println("Base URL: " + baseUrl);
-        Configuration.browser = "chrome";
+        Configuration.browser = "chrome";//FF works strange and fails(need investigation)
         Configuration.browserSize = "1600x1200";
         Configuration.reopenBrowserOnFail = true;
         open(baseUrl);
@@ -50,6 +50,10 @@ public class TestBase {
             WebDriverRunner.closeWebDriver();
         }
     }
+
+    /*
+     * sleep method is used for debugging
+     */
 
     public void sleep(int seconds){
         try {

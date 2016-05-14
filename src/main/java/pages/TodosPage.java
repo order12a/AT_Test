@@ -2,7 +2,6 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
@@ -16,7 +15,6 @@ public class TodosPage extends BasePage {
     }
 
     protected SelenideElement todoInput = $("#new-todo");
-    protected SelenideElement taskNameField = $("ul>li>.view>label");
     protected List<SelenideElement> taskNamesField = $$("ul>li>.view>label");
     protected List<SelenideElement> completeTaskCheckboxex = $$(".toggle");
     private List<SelenideElement> taskHolders = $$(".view");
@@ -26,7 +24,7 @@ public class TodosPage extends BasePage {
         todoInput.clear();
         todoInput.sendKeys(taskName);
         todoInput.waitUntil(Condition.enabled, WAIT_TIMEOUT);
-        $("header>input").toWebElement().sendKeys(Keys.CONTROL, Keys.ENTER);
+        $("header>input").pressEnter();
         isTaskCreated(taskName);
     }
 
@@ -43,10 +41,6 @@ public class TodosPage extends BasePage {
             }
         }
         return false;
-    }
-
-    public void deleteTargetTask(int taskNumber){
-        $("ul>li>.view>label", taskNumber).hover().find(".destroy").click();
     }
 
     public void deleteTargetTask(String taskName){
